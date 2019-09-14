@@ -1,6 +1,6 @@
 {
   "name": "generator-signalk-plugin",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Generates a plugin for the SignalK Node server",
   "files": [
     "generators"
@@ -13,7 +13,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/joelkoz/generator-signalk-plugin"
-  },  
+  },
   "dependencies": {
     "yeoman-generator": "^4.0.2"
   }
