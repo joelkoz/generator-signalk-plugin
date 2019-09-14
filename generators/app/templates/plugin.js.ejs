@@ -1,0 +1,97 @@
+const Bacon = require('baconjs');
+const SignalKPlugin = require('signalk-plugin-base');
+
+
+class <%= a.className %> extends SignalKPlugin {
+
+  constructor(app) {
+    super(app, '<%= a.id %>', '<%= a.name %>', '<%= a.description %>');
+
+<% paths.forEach(path => { %>
+    this.optStr('<%= path.pathOptionName %>', 'SignalK path for <%= path.title %>', '<%= path.path %>');
+    this.optStr('<%= path.typeFilterOptionName %>', 'Source Type filter for <%= path.title %>', '', false, 'Leave blank for all');
+    this.optStr('<%= path.talkerFilterOptionName %>', 'Source Talker filter for <%= path.title %>', '', false, 'Leave blank for all');
+<% }); %>
+
+  }
+
+
+  // Initialization of data streams and properties are done here...
+  onPluginStarted() {
+
+     <% if (a.hasAPI) { %>     
+     // This is for API demonstration only (see registerWithRouter())
+     this.apiTestData = {};
+     <% } %>
+
+<% paths.forEach(path => { -%>
+     // BaconJS data stream for <%= path.title %> -----------------------------------------------------------------
+     this.<%= path.streamName %> = this.getSKBus(this.options.<%= path.pathOptionName %>);
+
+     this.<%= path.streamName %>Val = this.<%= path.streamName %>
+         .filter(delta => {  return this.wildcardEq(delta.source.type, this.options.<%= path.typeFilterOptionName %>) &&
+                                    this.wildcardEq(delta.source.talker, this.options.<%= path.talkerFilterOptionName %>); 
+                         } )
+         .map(".value");
+
+     this.subscribeVal(this.<%= path.streamName %>Val, <%= path.handlerName %> );
+
+     // Uncomment this line to view incomming values on console...
+     // this.subscribeVal(this.<%= path.streamName %>, delta => { this.debug(`<%= path.upperName %>: ${JSON.stringify(delta, null, 2)}`) } );
+     // this.subscribeVal(this.<%= path.streamName %>Val, value => { this.debug(`<%= path.upperName %> (filtered): ${JSON.stringify(value, null, 2)}`) } );
+
+
+<% }); -%>
+  }
+
+
+  onPluginStopped() {
+     // Here is where you clean up things done in onPluginStarted() OTHER THAN
+     // subscriptions created by calling subscribeVal() (those are cleaned up
+     // automatically).
+  }
+
+
+<% if (a.hasAPI) { %>
+  /**
+   * This is where RESTul API call responses are defined...
+   * @param {object} router An ExpressJS "Router" object
+   * @see https://expressjs.com/en/guide/routing.html
+   */
+  registerWithRouter(router) {
+
+    this.debug("Registering routes...");
+    router.get("/api/testData", (req, res) => {
+        if (this.running) {
+          let jReturnVal = this.apiTestData;
+          this.debug(`Returning JSON value ${JSON.stringify(jReturnVal)}`)
+          res.json(jReturnVal);
+        }
+        else {
+          res.status(503).send('Plugin not running');
+        }
+    });
+  }
+<% } %>
+
+
+<% paths.forEach(path => { %>
+   <%= path.handlerName %>(<%= path.varName %>) {
+      // Handle changes to <%= path.title %> here
+
+   <%_ if (a.hasAPI) { -%>
+      // For API demo purposes only:
+      this.apiTestData.<%= path.varName %> = <%= path.varName %>;
+   <%_ } -%>
+   }
+
+<% }); %>
+
+
+};
+
+
+module.exports = function (app) {
+  var plugin = new <%= a.className %>(app);
+  return plugin;
+}
