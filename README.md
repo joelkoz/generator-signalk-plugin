@@ -3,10 +3,11 @@ A [Yoeman](https://yeoman.io) generator for initializing a [SignalK Node Server]
 
 
 ## Features
-o Jumpstarts plugin development by generating complete project using [SignalKPlugin](https://github.com/joelkoz/signalk-plugin-base) class
-o Initial scaffolding writes code to subscribe to the most common SignalK data streams
-o Supports optional front end UI Webapp development using React
-o Supports optional RESTful API calls to your plugin to retrieve data
+- Jumpstarts plugin development by generating complete project using [SignalKPlugin](https://github.com/joelkoz/signalk-plugin-base) class
+- Initial scaffolding writes code to subscribe to the most common SignalK data streams
+- Generates plugin configuration options to allow end user to change SignalK paths and/or limit data to a specific data source
+- Supports optional front end UI Webapp development using React
+- Supports optional RESTful API calls to your plugin to retrieve data
 
 ## Usage
 Installing Yoeman and this generator:
