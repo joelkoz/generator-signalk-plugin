@@ -21,7 +21,134 @@ var SigPathInfo = {
     heading: {
         title: "Heading",
         path: "navigation.headingTrue"
+    },
+
+    course: {
+        title: "Course over ground",
+        path: "navigation.courseOverGroundTrue"
+    },
+
+    closestAppr: {
+        title: "Closest approach (from AIS)",
+        path: "navigation.closestApproach"
+    },
+
+    tripETA: {
+        title: "Estimated time of arrival",
+        path: "navigation.destination.eta"
+    },
+
+    waterTemp: {
+        title: "Water surface temp",
+        path: "environment.water.temperature"
+    },
+
+    outsideTemp: {
+        title: "Outside air temperature",
+        path: "environment.outside.temperature"
+    },
+
+    outsideRelHumid: {
+        title: "Outside air rel humitity",
+        path: "environment.outside.humidity"
+    },
+
+    insideTemp: {
+        title: "Inside air temperature",
+        path: "environment.inside.temperature"
+    },
+
+    insideRelHumid: {
+        title: "Inside air rel humitity",
+        path: "environment.inside.humidity"
+    },
+
+    engRmTemp: {
+        title: "Engine room air temperature",
+        path: "environment.inside.engineRoom.temperature"
+    },
+
+    engRmRelHumid: {
+        title: "Engine room air rel humitity",
+        path: "environment.inside.engineRoom.relativeHumidity"
+    },
+
+    engine0State: {
+        title: "Engine 0 state",
+        path: "propulsion.0.state"
+    },
+
+    engine0Revs: {
+        title: "Engine 0 revolutions",
+        path: "propulsion.0.revolutions"
+    },
+
+    engine0Temp: {
+        title: "Engine 0 temperature",
+        path: "propulsion.0.temperature"
+    },
+
+    engine0OilTemp: {
+        title: "Engine 0 oil temperature",
+        path: "propulsion.0.oilTemperature"
+    },
+
+    engine0OilPress: {
+        title: "Engine 0 oil pressure",
+        path: "propulsion.0.oilPressure"
+    },
+
+    engine0Load: {
+        title: "Engine 0 load",
+        path: "propulsion.0.engineLoad"
+    },
+
+    engine0RunTime: {
+        title: "Engine 0 total run time",
+        path: "propulsion.0.runTime"
+    },
+
+    engine1State: {
+        title: "Engine 1 state",
+        path: "propulsion.1.state"
+    },
+
+    engine1Revs: {
+        title: "Engine 1 revolutions",
+        path: "propulsion.1.revolutions"
+    },
+
+    engine1Temp: {
+        title: "Engine 1 temperature",
+        path: "propulsion.1.temperature"
+    },
+
+    engine1OilTemp: {
+        title: "Engine 1 oil temperature",
+        path: "propulsion.1.oilTemperature"
+    },
+
+    engine1OilPress: {
+        title: "Engine 1 oil pressure",
+        path: "propulsion.1.oilPressure"
+    },
+
+    engine1Load: {
+        title: "Engine 1 load",
+        path: "propulsion.1.engineLoad"
+    },
+
+    engine1RunTime: {
+        title: "Engine 1 total run time",
+        path: "propulsion.1.runTime"
+    },
+
+
+    someSKData: {
+        title: "Generic/example data value",
+        path: "path.to.some.value"
     }
+
 }
 
 module.exports = class extends Generator {
