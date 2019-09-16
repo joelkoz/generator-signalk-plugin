@@ -1,6 +1,6 @@
 {
   "name": "generator-signalk-plugin",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Generates a plugin for the SignalK Node server",
   "files": [
     "generators"
