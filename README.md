@@ -9,7 +9,13 @@ A [Yoeman](https://yeoman.io) generator for initializing a [SignalK Node Server]
 - Supports optional front end UI Webapp development using React
 - Supports optional RESTful API calls to your plugin to retrieve data
 
-## Usage
+
+## Usage (automatic initialization with npm)
+
+An [npm initializer exists for this generator](https://github.com/joelkoz/create-signalk-plugin) to simplfy its usage.  See that project for details.
+
+
+## Usage (using Yoeman directly)
 Installing Yoeman and this generator:
 
 ```
